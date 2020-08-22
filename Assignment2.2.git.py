@@ -240,11 +240,11 @@ def convertToBinaryData(filename):
 
 
 def select():
-    sp.call('clear', shell=True)
+    sp.call('cls', shell=True)  #ifu are using window if u are use linux go for clear instead of cls
     sel = input("1. Add data\n2.Show Data\n3.Search\n4.Update\n5.Delete\n6.Show table\n7.Drop table\n8.Exit\n\n")
 
     if sel == '1':
-        sp.call('clear', shell=True)
+        sp.call('cls', shell=True)
 
         localtime = time.asctime(time.localtime(time.time()))
         # time_now= str(datetime.datetime.now())
@@ -255,16 +255,16 @@ def select():
         empPhoto = convertToBinaryData(photo)
         add_data(id_, name, phone, localtime, empPhoto)
     elif sel == '2':
-        sp.call('clear', shell=True)
+        sp.call('cls', shell=True)
         show_data()
         input("\n\npress enter to back:")
     elif sel == '3':
-        sp.call('clear', shell=True)
+        sp.call('cls', shell=True)
         id__ = int(input('Enter Id: '))
         show_data_by_id(id__)
         input("\n\npress enter to back:")
     elif sel == '4':
-        sp.call('clear', shell=True)
+        sp.call('cls', shell=True)
         id__ = int(input('Enter Id: '))
         show_data_by_id(id__)
         print()
@@ -273,17 +273,17 @@ def select():
         update_student(id__, name, phone)
         input("\n\nYour data has been updated \npress enter to back:")
     elif sel == '5':
-        sp.call('clear', shell=True)
+        sp.call('cls', shell=True)
         id__ = int(input('Enter Id: '))
         show_data_by_id(id__)
         delete_student(id__)
         input("\n\nYour data has been deleted \npress enter to back:")
     elif sel == '6':
-        sp.call('clear', shell=True)
+        sp.call('cls', shell=True)
         show_table()
         input("\n\npress enter to back:")
     elif sel == '7':
-        sp.call('clear', shell=True)
+        sp.call('cls', shell=True)
         tname = input('Enter name: ')
         show_table()
         drop_table(tname)
