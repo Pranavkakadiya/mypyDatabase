@@ -213,7 +213,7 @@ def get_table():
 
 
 def show_data():
-    students = get_data()
+    get_data()
     # for student in students:
     #     print(student)
 
