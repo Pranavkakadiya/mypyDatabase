@@ -3,8 +3,17 @@
 import sqlite3
 import subprocess as sp
 import time
-
+from pygame import mixer
+mixer.init()
+mixer.music.load('MeekMillGoingBadfeatDrakeOfficialVideo-arabsongtop.mp3')
+mixer.music.set_volume(0.5)
+mixer.music.play()
 import os
+from win32com.client import Dispatch
+
+speak = Dispatch("SAPI.SpVoice")
+
+
 
 #import datetime
 
@@ -41,6 +50,7 @@ def create_table():
     cursor.execute(query1)
 
     conn.commit()
+
     conn.close()
 
 
@@ -240,10 +250,13 @@ def convertToBinaryData(filename):
 
 
 def select():
+
+
     sp.call('cls', shell=True)  #ifu are using window if u are use linux go for clear instead of cls
     sel = input("1. Add data\n2.Show Data\n3.Search\n4.Update\n5.Delete\n6.Show table\n7.Drop table\n8.Exit\n\n")
 
     if sel == '1':
+        speak.Speak("you are going to add data")
         sp.call('cls', shell=True)
 
         localtime = time.asctime(time.localtime(time.time()))
@@ -255,15 +268,18 @@ def select():
         empPhoto = convertToBinaryData(photo)
         add_data(id_, name, phone, localtime, empPhoto)
     elif sel == '2':
+        speak.Speak("your data is here")
         sp.call('cls', shell=True)
         show_data()
         input("\n\npress enter to back:")
     elif sel == '3':
+        speak.Speak("you are going to search data for this enter id")
         sp.call('cls', shell=True)
         id__ = int(input('Enter Id: '))
         show_data_by_id(id__)
         input("\n\npress enter to back:")
     elif sel == '4':
+        speak.Speak("you are going to update data for this enter id which u want to update")
         sp.call('cls', shell=True)
         id__ = int(input('Enter Id: '))
         show_data_by_id(id__)
@@ -273,22 +289,27 @@ def select():
         update_student(id__, name, phone)
         input("\n\nYour data has been updated \npress enter to back:")
     elif sel == '5':
+        speak.Speak("you are going to delete data for this enter id which u want to delete")
         sp.call('cls', shell=True)
         id__ = int(input('Enter Id: '))
         show_data_by_id(id__)
         delete_student(id__)
         input("\n\nYour data has been deleted \npress enter to back:")
     elif sel == '6':
+        speak.Speak("your all tables are below")
         sp.call('cls', shell=True)
         show_table()
         input("\n\npress enter to back:")
     elif sel == '7':
+        speak.Speak("your are going to delete table for this enter table name which u want to delete")
         sp.call('cls', shell=True)
         tname = input('Enter name: ')
         show_table()
         drop_table(tname)
         input("\n\nYour table has been deleted \npress enter to back:")
     else:
+        speak.Speak("Have a goood day")
+        mixer.music.stop()
         return 0
     return 1
 
